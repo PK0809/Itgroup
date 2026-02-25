@@ -1,3 +1,5 @@
+import os
+import dj_database_url
 from pathlib import Path
 
 # ======================================================
@@ -13,7 +15,7 @@ SECRET_KEY = 'django-insecure-change-this-in-production'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []  # Add domain/IP in production
+ALLOWED_HOSTS = ['.onrender.com']  # Add domain/IP in production
 
 
 # ======================================================
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
 # ======================================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,10 +80,10 @@ TEMPLATES = [
 # DATABASE (SQLite - Development)
 # ======================================================
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+        conn_max_age=600
+    )
 }
 
 
@@ -118,12 +121,9 @@ USE_TZ = True
 # STATIC FILES
 # ======================================================
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",   # Development static folder
-]
-
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Production collected static
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # ======================================================
