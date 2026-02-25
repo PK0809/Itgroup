@@ -1,6 +1,6 @@
 import os
-import dj_database_url
 from pathlib import Path
+import dj_database_url
 
 # ======================================================
 # BASE DIRECTORY
@@ -11,11 +11,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ======================================================
 # SECURITY SETTINGS
 # ======================================================
-SECRET_KEY = 'django-insecure-change-this-in-production'
 
-DEBUG = True
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-fallback-key"
+)
 
-ALLOWED_HOSTS = ['.onrender.com']  # Add domain/IP in production
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = [
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # ======================================================
@@ -29,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core',  # Your main app
+    'core',
 ]
 
 
@@ -38,7 +46,7 @@ INSTALLED_APPS = [
 # ======================================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static handling
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +60,6 @@ MIDDLEWARE = [
 # URL CONFIGURATION
 # ======================================================
 ROOT_URLCONF = 'itgroup.urls'
-
 WSGI_APPLICATION = 'itgroup.wsgi.application'
 
 
@@ -62,7 +69,7 @@ WSGI_APPLICATION = 'itgroup.wsgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # Global templates folder
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,12 +84,13 @@ TEMPLATES = [
 
 
 # ======================================================
-# DATABASE (SQLite - Development)
+# DATABASE
 # ======================================================
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-        conn_max_age=600
+        conn_max_age=600,
+        ssl_require=False
     )
 }
 
@@ -91,18 +99,10 @@ DATABASES = {
 # PASSWORD VALIDATION
 # ======================================================
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
@@ -110,15 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # INTERNATIONALIZATION
 # ======================================================
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Asia/Kolkata'
-
 USE_I18N = True
 USE_TZ = True
 
 
 # ======================================================
-# STATIC FILES
+# STATIC FILES (Render Ready)
 # ======================================================
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -130,7 +128,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # MEDIA FILES
 # ======================================================
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # ======================================================
