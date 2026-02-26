@@ -1,0 +1,179 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ITgroup | Enterprise Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Particles -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <style>
+        body {
+            background: #091428;
+            color: white;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .glow-btn {
+            background: #00d4ff;
+            box-shadow: 0 0 20px rgba(0,212,255,0.5);
+            transition: 0.3s ease;
+        }
+
+        .glow-btn:hover {
+            box-shadow: 0 0 40px rgba(0,212,255,0.8);
+            transform: translateY(-3px);
+        }
+
+        .nav-link {
+            color: white;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #00d4ff;
+        }
+
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 8px #00d4ff);
+            transform: scale(1.05);
+            transition: 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= PAGE LOADER ================= -->
+<div id="loader" class="fixed inset-0 bg-[#091428] flex items-center justify-center z-[9999]">
+    <div class="w-16 h-16 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<nav id="navbar" class="fixed w-full top-0 z-50 transition duration-300">
+
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+        <a href="/" class="flex items-center">
+            <img src="{% static 'images/logo.png' %}"
+                 alt="ITgroup Logo"
+                 class="h-16 md:h-20 w-auto object-contain logo-glow">
+        </a>
+
+        <div class="space-x-14 hidden md:flex items-center text-lg font-semibold">
+
+            <a href="/" class="nav-link hover:scale-105 transition">Home</a>
+            <a href="/about/" class="nav-link hover:scale-105 transition">About</a>
+            <a href="/products/" class="nav-link hover:scale-105 transition">Products</a>
+            <a href="/solutions/" class="nav-link hover:scale-105 transition">Solutions</a>
+            <a href="/contact/" class="nav-link hover:scale-105 transition">Contact</a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- ================= PAGE CONTENT ================= -->
+{% block content %}{% endblock %}
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#0b1d3a] pt-16 pb-8 mt-20">
+    <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-gray-300">
+
+        <div>
+            <h3 class="text-xl font-bold text-cyan-400 mb-4">ITgroup</h3>
+            <p class="text-gray-400">
+                Delivering enterprise networking, security, wireless, and software solutions.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="font-semibold mb-4 text-white">Quick Links</h4>
+            <ul class="space-y-2">
+                <li><a href="/" class="hover:text-cyan-400">Home</a></li>
+                <li><a href="/about/" class="hover:text-cyan-400">About</a></li>
+                <li><a href="/products/" class="hover:text-cyan-400">Products</a></li>
+                <li><a href="/solutions/" class="hover:text-cyan-400">Solutions</a></li>
+                <li><a href="/contact/" class="hover:text-cyan-400">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-semibold mb-4 text-white">Head Office</h4>
+            <p class="text-gray-400">
+                59A, Gopal Nagar<br>
+                Yashoda Nagar<br>
+                Kanpur – 208011<br>
+                Uttar Pradesh, India
+            </p>
+            <p class="mt-3 text-cyan-400 font-semibold">
+                📞 +91 80903 55806
+            </p>
+        </div>
+
+        <div>
+            <h4 class="font-semibold mb-4 text-white">Business Hours</h4>
+            <p class="text-gray-400">
+                Mon – Sat: 9:00 AM – 7:00 PM<br>
+                Sunday: Closed
+            </p>
+        </div>
+
+    </div>
+
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-500 text-sm">
+        © 2026 ITgroup. All Rights Reserved.
+    </div>
+</footer>
+
+<!-- ================= WHATSAPP BUTTON ================= -->
+<a href="https://wa.me/918090355806"
+   target="_blank"
+   class="fixed bottom-6 right-6 z-50">
+
+    <div class="bg-green-500 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300 animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 32 32"
+             class="w-7 h-7 fill-white">
+            <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.2 4.9 1.8 7.7 1.8 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/>
+        </svg>
+    </div>
+</a>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+            navbar.classList.add("bg-[#0b1d3a]", "shadow-lg");
+        } else {
+            navbar.classList.remove("bg-[#0b1d3a]", "shadow-lg");
+        }
+    });
+
+    window.addEventListener("load", function() {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        loader.style.transition = "0.5s ease";
+        setTimeout(() => loader.style.display = "none", 500);
+    });
+</script>
+
+</body>
+</html>
