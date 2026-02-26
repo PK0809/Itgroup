@@ -1,0 +1,105 @@
+﻿{% extends "base.html" %}
+{% block content %}
+
+<!-- Page Hero -->
+<section class="relative py-28 bg-gradient-to-r from-[#0b1d3a] to-[#001f2f] text-center">
+
+    <div class="container mx-auto px-6">
+        <h1 class="text-5xl font-bold mb-4" data-aos="fade-up">
+            Our <span class="text-cyan-400">Products</span>
+        </h1>
+        <p class="text-gray-300 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            Enterprise-grade hardware and software solutions designed for performance and security.
+        </p>
+    </div>
+
+</section>
+
+<!-- Product Categories -->
+<section class="py-24 bg-[#091428]">
+
+    <div class="container mx-auto px-6">
+
+        <div class="grid md:grid-cols-2 gap-12">
+
+            <!-- Networking -->
+            <a href="/products/networking/" 
+               class="glass p-12 rounded-2xl hover:scale-105 transition duration-500 block"
+               data-aos="fade-up">
+
+                <div class="text-5xl text-cyan-400 mb-6">🌐</div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+                    Networking & Data Infrastructure
+                </h3>
+
+                <p class="text-gray-400">
+                    Enterprise switching, routing, structured cabling, firewall systems,
+                    and scalable data center solutions.
+                </p>
+
+            </a>
+
+            <!-- Security -->
+            <a href="/products/security/" 
+               class="glass p-12 rounded-2xl hover:scale-105 transition duration-500 block"
+               data-aos="fade-up"
+               data-aos-delay="200">
+
+                <div class="text-5xl text-cyan-400 mb-6">📹</div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+                    Safety & Security Infrastructure
+                </h3>
+
+                <p class="text-gray-400">
+                    Advanced CCTV surveillance, access control systems,
+                    biometric authentication, and monitoring solutions.
+                </p>
+
+            </a>
+
+            <!-- Wireless -->
+            <a href="/products/wireless/" 
+               class="glass p-12 rounded-2xl hover:scale-105 transition duration-500 block"
+               data-aos="fade-up">
+
+                <div class="text-5xl text-cyan-400 mb-6">📡</div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+                    Wireless Solutions
+                </h3>
+
+                <p class="text-gray-400">
+                    Enterprise WiFi deployment, outdoor wireless bridges,
+                    controllers, and seamless connectivity solutions.
+                </p>
+
+            </a>
+
+            <!-- Software -->
+            <a href="/products/software/" 
+               class="glass p-12 rounded-2xl hover:scale-105 transition duration-500 block"
+               data-aos="fade-up"
+               data-aos-delay="200">
+
+                <div class="text-5xl text-cyan-400 mb-6">💻</div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+                    Software Solutions
+                </h3>
+
+                <p class="text-gray-400">
+                    CRM, ERP, cybersecurity platforms, cloud systems,
+                    and custom enterprise software development.
+                </p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

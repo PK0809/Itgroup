@@ -1,0 +1,141 @@
+﻿{% extends "base.html" %}
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+
+    <!-- Particles Background -->
+    <div id="particles-js" class="absolute inset-0 -z-10"></div>
+
+    <!-- Overlay Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0b1d3a]/80 to-[#091428] -z-10"></div>
+
+    <div class="max-w-5xl px-6">
+
+        <h1 
+            class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-tight tracking-tight"
+            data-aos="fade-up"
+        >
+            Empowering Enterprises <br>
+            <span class="text-cyan-400">With Smart Technology</span>
+        </h1>
+
+        <p 
+            class="mt-6 text-lg md:text-xl text-gray-300"
+            data-aos="fade-up"
+            data-aos-delay="300"
+        >
+            Advanced Networking, Surveillance, Wireless & Software Solutions 
+            tailored for modern businesses.
+        </p>
+
+        <div 
+            class="mt-8 flex justify-center gap-6"
+            data-aos="fade-up"
+            data-aos-delay="600"
+        >
+            <a href="/contact/"
+               class="glow-btn px-8 py-3 rounded-xl font-semibold text-black">
+               Get a Quote
+            </a>
+
+            <a href="/solutions/"
+               class="border border-cyan-400 px-8 py-3 rounded-xl hover:bg-cyan-400 hover:text-black transition">
+               Our Solutions
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 animate-bounce">
+        <div class="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-cyan-400 mt-2 rounded"></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= SERVICES SECTION ================= -->
+<section class="py-20 bg-[#0b1d3a]">
+    <div class="container mx-auto px-6">
+
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold">
+                Our Core <span class="text-cyan-400">Solutions</span>
+            </h2>
+            <p class="text-gray-400 mt-4">
+                Delivering scalable, secure, and future-ready technology infrastructure.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-500" data-aos="fade-up">
+                <div class="text-cyan-400 text-4xl mb-4">🌐</div>
+                <h3 class="text-xl font-semibold mb-3">Networking & Data Infrastructure</h3>
+                <p class="text-gray-400">Enterprise switching, routing, structured cabling, and firewall solutions.</p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-500" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-cyan-400 text-4xl mb-4">📹</div>
+                <h3 class="text-xl font-semibold mb-3">Safety & Security Infrastructure</h3>
+                <p class="text-gray-400">Advanced CCTV, access control, biometric, and monitoring systems.</p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-500" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-cyan-400 text-4xl mb-4">📡</div>
+                <h3 class="text-xl font-semibold mb-3">Wireless Solutions</h3>
+                <p class="text-gray-400">Enterprise WiFi, outdoor wireless bridges, and seamless connectivity.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY CHOOSE SECTION ================= -->
+<section class="py-24 bg-[#091428]">
+    <div class="container mx-auto px-6 text-center">
+
+        <h2 class="text-4xl font-bold mb-16" data-aos="fade-up">
+            Why Choose <span class="text-cyan-400">ITgroup</span>
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-10 mb-20">
+
+            <div data-aos="fade-up">
+                <div class="text-5xl text-cyan-400 mb-4">✔</div>
+                <h3 class="text-xl font-semibold mb-3">Certified Engineers</h3>
+                <p class="text-gray-400">Experienced professionals delivering world-class IT infrastructure.</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="text-5xl text-cyan-400 mb-4">⚡</div>
+                <h3 class="text-xl font-semibold mb-3">Fast Deployment</h3>
+                <p class="text-gray-400">Quick and efficient implementation with minimal downtime.</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="400">
+                <div class="text-5xl text-cyan-400 mb-4">🔒</div>
+                <h3 class="text-xl font-semibold mb-3">Secure & Scalable</h3>
+                <p class="text-gray-400">Infrastructure designed for growth and maximum protection.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= PARTICLES ================= -->
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    size: { value: 3 },
+    move: { speed: 1 },
+    line_linked: { enable: true, opacity: 0.2 }
+  }
+});
+</script>
+
+{% endblock %}
